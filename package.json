@@ -1,0 +1,27 @@
+{
+	"name": "thorcharts-fullstack",
+	"version": "1.0.0",
+	"main": "main.js",
+	"author": "pietrekt2",
+	"license": "MIT",
+	"scripts": {
+		"build-frontend": "yarn --cwd ./frontend/ build",
+		"start-frontend": "yarn --cwd ./frontend/ start",
+		"update-frontend": "yarn --cwd ./frontend/ build && yarn clear-frontend && yarn copy-frontend",
+		"copy-frontend": "copyfiles -u 2 \"./frontend/build/**/*\" backend/public/app",
+		"clear-frontend": "rimraf -rf backend/public/app",
+		"start": "yarn --cwd ./backend/ start",
+		"fullstart": "yarn update-frontend && yarn start",
+		"build": "yarn --cwd ./backend/ build",
+		"initiate-frontend": "yarn --cwd ./frontend/",
+		"initiate-backend": "yarn --cwd ./backend/",
+		"fullinitiate": "yarn && yarn initiate-frontend && yarn initiate-backend",
+		"prod": "yarn fullinitiate && yarn update-frontend && yarn start",
+		"launch": "yarn --cwd ./backend/ launch"
+	},
+	"dependencies": {
+		"rimraf": "^3.0.2",
+		"copyfiles": "^2.4.1"
+	},
+	"devDependencies": {}
+}
